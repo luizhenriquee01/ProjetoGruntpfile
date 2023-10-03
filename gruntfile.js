@@ -91,6 +91,18 @@ module.exports = function (grunt) {
         },
       },
     },
+    imagemin: {
+      dynamic: {
+        files: [
+          {
+            expand: true,
+            cwd: './src/images/*', // Caminho das imagens originais
+            src: ['**/*.{png,jpg,gif}'], // Tipos de arquivo que deseja otimizar
+            dest: 'dist/images/', // Pasta de destino para as imagens otimizadas
+          },
+        ],
+      },
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -99,6 +111,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
 
   grunt.registerTask('default', ['watch']);
   grunt.registerTask('build', [
